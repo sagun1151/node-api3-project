@@ -70,8 +70,10 @@ router.post('/:id/posts', logger, validateUserId, validatePost, async (req, res)
   // this needs a middleware to verify user id
   // and another middleware to check that the request body is valid
   try {
-    const post = await Posts.insert(req.body);
-    console.log('post',post)
+    const post = await Posts.insert({
+      user_id: req.params.id,
+      text: req.text
+      });
     res.status(201).json(post);
   }
   catch(err){
