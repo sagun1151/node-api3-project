@@ -75,8 +75,7 @@ router.post('/:id/posts', logger, validateUserId, validatePost, async (req, res)
       text: req.text
       });
     res.status(201).json(post);
-  }
-  catch(err){
+  } catch (err){
     res.status(500).json({message: err.message})
   }
 });
